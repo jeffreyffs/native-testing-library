@@ -100,3 +100,17 @@ test("it finds <TextInput /> by value={'hey'} when another a Switch with value={
 
   getByDisplayValue('hey');
 });
+
+test("it finds <Picker /> by value={'java'} when another a Switch with value={true} is present", () => {
+  const { getByDisplayValue } = render(
+    <View>
+      <Switch value={true} />
+      <Picker selectedValue={'java'} onValueChange={itemValue => setValue(itemValue)}>
+        <Picker.Item label="Java" value="java" />
+        <Picker.Item label="JavaScript" value="js" />
+      </Picker>
+    </View>,
+  );
+
+  getByDisplayValue('java');
+});
